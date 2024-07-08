@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "server": "json-server --watch data.json --port 8080"
+    "server": "json-server --watch data.json --port 8080",
+    "start": "node index.js"
   }
 }
