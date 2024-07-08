@@ -25,162 +25,151 @@
     </nav>
     <div class="herosection">
         <img src="https://as1.ftcdn.net/v2/jpg/06/57/86/06/1000_F_657860698_QCyEqAPQ2K1aFgRMycUQq2FI3M5vwMuC.jpg">
-
     </div>
     <div class="container">
         <form id="form">
-        <h1>Student details</h1>    
-    <Label>Name:-</Label><br>
-    <input type="text" name="name" id="name" placeholder="Enter your name" ><br>
-    <Label>Email:-</Label><br>
-    <input type="email" name="email" id="email" placeholder="Enter your email"><br>
-    <Label>Phone:-</Label><br>
-    <input type="number" name="phone" id="phone" placeholder="Enter your phone">
-    <Label>Photo:-</Label><br>
-    <input type="url" name="phone" id="photo" placeholder="Enter your photo">
-     
-    <br><br>
-    
-    <div class="button"><button id="btn">Submit</button></div>
+            <h1>Student details</h1>
+            <Label>Name:</Label><br>
+            <input type="text" name="name" id="name" placeholder="Enter your name" required><br>
+            <Label>Email:</Label><br>
+            <input type="email" name="email" id="email" placeholder="Enter your email" required><br>
+            <Label>Phone:</Label><br>
+            <input type="number" name="phone" id="phone" placeholder="Enter your phone" required><br>
+            <Label>Photo:</Label><br>
+            <input type="url" name="photo" id="photo" placeholder="Enter your photo" required><br><br>
+            <div class="button"><button id="btn">Submit</button></div>
+        </form>
 
-</form>
-</div>
-<div id="Studentdata">
 
-</div>
+
+
+        <div class="secondlink">
+     <a href="" target="_blank">Student contact</a>
+     <a href="" target="blank">Student address</a>
+    </div>
+
+
+
+    </div>
+    <div id="Studentdata"></div>
 </body>
-   <script>
-   let state=false;
-   let currentid=null
+<script>
+    let state = false;
+    let currentid = null;
 
-    let form=document.getElementById("form")
-    let button=document.getElementById("btn")
-    button.addEventListener("click",postData)
-    
-    
-    async function postData(){
-        let obj={
-            name:document.getElementById("name").value,
-            email:document.getElementById("email").value,
-            phone:document.getElementById("phone").value,
-            photo:document.getElementById("photo").value
+    let form = document.getElementById("form");
+    let button = document.getElementById("btn");
 
-        }
-      
-        try{
-            let res=await axios.post("http://localhost:8080/user",obj)
-            console.log(res)
-            }catch(error){
-                console.log(error)                
-        }
-    }
-    
-
-
-    async function getdata(){
-        try{
-            let res=await axios.get("http://localhost:8080/user")
-            // console.log(res.data)
-           displaydata(res.data)       
-
-        }
-        catch(error){
-            console.log(error)
-
-    }}
-    getdata()
-    function displaydata (data){
-        data.forEach((ele) => {  
-            let Studentdata=document.getElementById("Studentdata")   
-            let div=document.createElement("div")
-            let h1=document.createElement("h1")
-            h1.innerText="Govt.Senior.Scondary School Jaipur"
-            let h2=document.createElement("h2")
-            h2.innerText="STUDENT ID CARD"
-            let Photo=document.createElement("img")
-            Photo.src=ele.photo         
-            let h3=document.createElement("h3")
-            h3.innerText=ele.name
-            let h4=document.createElement("h4")
-            h4.innerText=ele.email
-            let h5=document.createElement("h5")
-            h5.innerText=ele.phone
-            let button1=document.createElement("button")
-            button1.innerText="Edit"
-            button1.addEventListener("click",()=>{
-                getdataforEdit(ele)
-            })
-            let btn1=document.createElement("button")
-            btn1.innerText="Delete"
-            btn1.addEventListener("click",()=>{
-                deleteData(ele.id)            
-                alert("delete sucessfull")
-                console.log(ele.id)
-                displaydata(res.data)
-            })
-       
-        
-
-            div.append(h1,h2,Photo,h3,h4,h5,button1,btn1)
-            Studentdata.append(div) 
-        });
-
-
-    } 
-    displaydata ()
-
-    async function deleteData(id){
-        try{
-            let res=await axios.delete(`http://localhost:8080/user/${id}`)
-            console.log(res.data)    
-        }
-        
-     catch (error){
-      console.log(error);
-     }
-    }
-
-    async function getdataforEdit(data){
-        let obj={
-            name:document.getElementById("name").value=data.name,
-            email:document.getElementById("email").value=data.email,
-            phone:document.getElementById("phone").value=data.phone,
-            photo:document.getElementById("photo").value=data.photo
-
-        };
-        button.innerText="update"           
-        state=true;
-        currentid=data.id;
-        button.addEventListener("click",()=>{
-            alert("helo")
-        if(state === true){
+    form.addEventListener("submit", (event) => {
+        event.preventDefault();
+        if (state) {
             updateData();
-            // button.innerText="Submit"
-        }else{
+        } else {
             postData();
         }
-    })
+    });
 
-
-    }
-    async function updateData(){
-        let updateobj={
-            name:document.getElementById("name").value,           
-             email:document.getElementById("email").value,
-            phone:document.getElementById("phone").value,
-            photo:document.getElementById("photo").value
+    async function postData() {
+        let obj = {
+            name: document.getElementById("name").value,
+            email: document.getElementById("email").value,
+            phone: document.getElementById("phone").value,
+            photo: document.getElementById("photo").value
         };
-        try{
-            let res=await axios.patch(`http://localhost:8080/user/${currentid}`,updateobj);
-            console.log(res.data)
-            alert("updated");
-            // state=false
-        }catch(error){
-            console.log(error)
+
+        try {
+            let res = await axios.post("http://localhost:8080/user", obj);
+            console.log(res);
+            getdata();
+        } catch (error) {
+            console.log(error);
         }
-
     }
-   
 
-   </script>
+    async function getdata() {
+        try {
+            let res = await axios.get("http://localhost:8080/user");
+            displaydata(res.data);
+        } catch (error) {
+            console.log(error);
+        }
+    }
+    getdata();
+
+    function displaydata(data) {
+        let Studentdata = document.getElementById("Studentdata");
+        Studentdata.innerHTML = ""; // Clear the container before displaying data
+        data.forEach((ele) => {
+            let div = document.createElement("div");
+            let h1 = document.createElement("h1");
+            h1.innerText = "Govt.Senior.Secondary School Jaipur";
+            let h2 = document.createElement("h2");
+            h2.innerText = "STUDENT ID CARD";
+            let Photo = document.createElement("img");
+            Photo.src = ele.photo;
+            let h3 = document.createElement("h3");
+            h3.innerText = ele.name;
+            let h4 = document.createElement("h4");
+            h4.innerText = ele.email;
+            let h5 = document.createElement("h5");
+            h5.innerText = ele.phone;
+            let button1 = document.createElement("button");
+            button1.innerText = "Edit";
+            button1.addEventListener("click", () => {
+                getdataforEdit(ele);
+            });
+            let btn1 = document.createElement("button");
+            btn1.innerText = "Delete";
+            btn1.addEventListener("click", () => {
+                deleteData(ele.id);
+                alert("Delete successful");
+            });
+
+            div.append(h1, h2, Photo, h3, h4, h5, button1, btn1);
+            Studentdata.append(div);
+        });
+    }
+
+    async function deleteData(id) {
+        try {
+            let res = await axios.delete(`http://localhost:8080/user/${id}`);
+            console.log(res.data);
+            getdata(); // Refresh the data after deletion
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    function getdataforEdit(data) {
+        document.getElementById("name").value = data.name;
+        document.getElementById("email").value = data.email;
+        document.getElementById("phone").value = data.phone;
+        document.getElementById("photo").value = data.photo;
+
+        button.innerText = "Update";
+        state = true;
+        currentid = data.id;
+    }
+
+    async function updateData() {
+        let updateobj = {
+            name: document.getElementById("name").value,
+            email: document.getElementById("email").value,
+            phone: document.getElementById("phone").value,
+            photo: document.getElementById("photo").value
+        };
+
+        try {
+            let res = await axios.patch(`http://localhost:8080/user/${currentid}`, updateobj);
+            console.log(res.data);
+            alert("Updated");
+            state = false;
+            currentid = null;
+            button.innerText = "Submit";
+            getdata(); // Refresh the data after update
+        } catch (error) {
+            console.log(error);
+        }
+    }
+</script>
 </html>

@@ -58,6 +58,8 @@ height: 400px;
 border: 2px solid green;
 padding: 1%;
 
+
+
 }
 form{
     border: 1px solid black;
@@ -124,5 +126,15 @@ button{
     /* margin: 2%; */
     width: auto;
 }
+.secondlink {
+    /* border: 1px solid; */
+    color: black;
+    display: flex;
+    justify-content:space-around;
+    font-size: 40px;
+    
+}
+    
+   
 
     
