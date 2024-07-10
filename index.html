@@ -109,11 +109,11 @@
             let Photo = document.createElement("img");
             Photo.src = ele.photo;
             let h3 = document.createElement("h3");
-            h3.innerText = "Name",ele.name;
+            h3.innerText = `Name:- ${ele.name}`;
             let h4 = document.createElement("h4");
-            h4.innerText = ele.email;
+            h4.innerText = `Email:- ${ele.email}`;
             let h5 = document.createElement("h5");
-            h5.innerText = ele.phone;
+            h5.innerText = `Phone:- ${ele.phone}`;
             let button1 = document.createElement("button");
             button1.innerText = "Edit";
             button1.addEventListener("click", () => {
