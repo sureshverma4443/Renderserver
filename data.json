@@ -83,6 +83,13 @@
       "phone": "08432242461",
       "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ4FCuveZ2gLtLItbkg3cOdBkOgGw7jntORag&s",
       "id": 13
+    },
+    {
+      "name": "SURESH Raigar",
+      "email": "sureshverma4443@gmail.com",
+      "phone": "08432242461",
+      "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ4FCuveZ2gLtLItbkg3cOdBkOgGw7jntORag&s",
+      "id": 14
     }
   ],
   "studentcontact": [
@@ -134,7 +141,5 @@
       "id": 2
     }
   ],
-  "data":[
-    
-  ]
+  "data": []
 }
