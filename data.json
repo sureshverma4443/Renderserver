@@ -50,7 +50,7 @@
       "id": 8
     },
     {
-      "name": "m",
+      "name": "mkkkk",
       "email": "sureshverma4443@gmail.com",
       "phone": "8432242461",
       "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ4FCuveZ2gLtLItbkg3cOdBkOgGw7jntORag&s",
@@ -76,13 +76,49 @@
       "phone": "084322424614",
       "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ4FCuveZ2gLtLItbkg3cOdBkOgGw7jntORag&s",
       "id": 12
+    }
+  ],
+  "studentcontact": [
+    {
+      "Mobile": "782575",
+      "instaid": "7575",
+      "Whatappsnumber": "7575",
+      "id": 1,
+      "name": "5",
+      "email": "7575",
+      "phone": "7575"
     },
     {
-      "name": "SURESH VERMAs",
-      "email": "sureshverma4443@gmail.com",
-      "phone": "08432242461",
-      "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ4FCuveZ2gLtLItbkg3cOdBkOgGw7jntORag&s",
-      "id": 13
+      "Mobile": "5",
+      "instaid": "358",
+      "Whatappsnumber": "85387",
+      "id": 2
+    },
+    {
+      "Mobile": "7863783",
+      "instaid": "856387",
+      "Whatappsnumber": "86387",
+      "id": 3
+    },
+    {
+      "Mobile": "1564165",
+      "instaid": "5641561",
+      "Whatappsnumber": "08432242461",
+      "id": 4
+    }
+  ],
+  "studentaddress": [
+    {
+      "State": "fdgfg",
+      "Dist": "gfgdf",
+      "Village": "fgdfg",
+      "id": 1
+    },
+    {
+      "State": "fdgfg",
+      "Dist": "gfgdf",
+      "Village": "fgdfg",
+      "id": 2
     }
   ]
 }
